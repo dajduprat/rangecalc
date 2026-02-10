@@ -7,7 +7,7 @@
  */
 export async function entity() {
   // Add delay of 1 second
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const nestedEntity1 = {
     type: "Entity",
@@ -100,4 +100,16 @@ export async function entity() {
   };
 
   return entityValue;
+}
+
+/**
+ * Returns the current timestamp
+ * @customfunction
+ * @streaming
+ * @param {CustomFunctions.StreamingInvocation<string>} invocation Custom function invocation
+ * @returns {string}
+ */
+export function streamingTimestamp(invocation) {
+  // Send initial timestamp
+  invocation.setResult(new Date().toISOString());
 }
